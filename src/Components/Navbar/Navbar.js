@@ -1,6 +1,5 @@
 import { Disclosure } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
-import { PlusIcon } from "@heroicons/react/20/solid";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { authContext } from "../Context/AuthContext/AuthContext";
@@ -41,43 +40,10 @@ export default function Navbar() {
                 </div>
                 <div className="hidden md:ml-6 md:flex md:items-center md:space-x-4">
 
-                  {/* {token &&
-                    <>
-                      <Link
-                        to="/"
-                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                      >
-                        Dashboard
-                      </Link>
-                      <Link
-                        to="/accounts"
-                        className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                      >
-                        Account
-                      </Link>
-
-                    </>
-                  } */}
-
                 </div>
 
               </div>
-              {/* {!token &&
-                <div className="flex items-center">
-                  <div className="flex-shrink-0">
-                    <Link
-                      to="/dashboard"
-                      className="relative inline-flex items-center rounded-md border border-transparent bg-indigo-500 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-indigo-600 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-800"
-                    >
-                      <PlusIcon
-                        className="-ml-1 mr-2 h-5 w-5"
-                        aria-hidden="true"
-                      />
-                      <span>Create Account</span>
-                    </Link>
-                  </div>
-                </div>
-              } */}
+
               {!token &&
                 <>
                   <div className="pt-5">
@@ -108,44 +74,6 @@ export default function Navbar() {
 
           </div>
 
-          {/* Mobile */}
-          <Disclosure.Panel className="md:hidden">
-            <div className="space-y-1 px-2 pt-2 pb-3 sm:px-3">
-
-              {token &&
-                <Link
-                  to="/"
-                  className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                >
-                  Dashboard
-                </Link>
-              }
-              {!token &&
-                <>
-
-                  <Link
-                    to="/"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                  >
-                    Login
-                  </Link>
-
-                  <Link
-                    to="/register"
-                    className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-                  >
-                    Register
-                  </Link>
-
-                </>
-              }
-              {token &&
-                <button className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium" onClick={() => logoutUser()}>
-                  Logout
-                </button>
-              }
-            </div>
-          </Disclosure.Panel>
         </>
       )}
     </Disclosure>

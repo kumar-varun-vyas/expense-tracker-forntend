@@ -1,8 +1,7 @@
-import AccountList from "../AccountList/AccountList";
 import AccountSummary from "./AccountSummary";
 import { authContext } from "../Context/AuthContext/AuthContext";
 import { useContext, useEffect } from "react";
-
+import MainPage from "../MainPage/MainPage";
 
 const AccountDashboard = () => {
   const { fetchProfileAction, profile, error, incomeList, expenseList } = useContext(authContext)
@@ -10,7 +9,6 @@ const AccountDashboard = () => {
   useEffect(() => {
     fetchProfileAction()
   }, [])
-
 
 
   return (
@@ -27,7 +25,9 @@ const AccountDashboard = () => {
             </div >
           </>)
           : (<>
-            <AccountSummary profileData={profile} incomeList={incomeList} expenseList={expenseList} />
+            <MainPage>
+              <AccountSummary profileData={profile} incomeList={incomeList} expenseList={expenseList} />
+            </MainPage>
           </>)
       }
     </>

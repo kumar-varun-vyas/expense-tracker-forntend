@@ -34,11 +34,8 @@ export default function AccountDetails() {
 
   }, [transactions])
 
-  console.log("ac----", account)
-  // pagination 
-  //prev btn
-  const handlePrevBtn = () => {
 
+  const handlePrevBtn = () => {
     setPage(() => {
       if (page === 1) return page;
       else {
@@ -47,7 +44,7 @@ export default function AccountDetails() {
     })
 
   }
-  //next btn
+
   const handleNextBtn = () => {
     setPage((page) => {
       if (page === pageCount) return page;
@@ -55,24 +52,8 @@ export default function AccountDetails() {
         return page + 1
       }
     })
-
   }
-  const totalExpenses = transaction?.reduce((acc, transaction) => {
-    if (transaction?.transactionType === "Expenses") {
-      return acc + transaction?.amount
-    } else {
-      return acc
-    }
-  }, 0)
 
-
-  const totalIncome = transaction?.reduce((acc, transaction) => {
-    if (transaction?.transactionType === "Income") {
-      return acc + transaction?.amount
-    } else {
-      return acc
-    }
-  }, 0)
 
   return (
     <>
@@ -116,7 +97,6 @@ export default function AccountDetails() {
                       </dt>
                       <dd className=" text-4xl font-bold tracking-tight text-indigo-600">
                         ${account?.totalBalance}
-                        {/* $ {totalIncome + account?.initialBalance - totalExpenses} */}
                       </dd>
 
                     </div>
@@ -128,12 +108,6 @@ export default function AccountDetails() {
                       <dd className=" text-4xl font-bold tracking-tight text-red-600">
                         $ {account?.totalExpense}
                       </dd>
-                      {/* <Link
-                        // to={`/expenses-list/${accountID}`}
-                        className="  font-bold tracking-tight text-green-600"
-                      >
-                        View History
-                      </Link> */}
                     </div>
                     <div className="flex flex-col border-t border-gray-100 pb-1 text-center sm:border-0 sm:border-l">
                       <dt className=" mt-2 text-lg font-medium leading-6 text-gray-500">
@@ -142,12 +116,7 @@ export default function AccountDetails() {
                       <dd className=" text-4xl font-bold tracking-tight text-green-600">
                         $ {account?.totalIncome}
                       </dd>
-                      {/* <Link
-                        // to={`/income-list/${accountID}`}
-                        className="  font-bold tracking-tight text-green-600"
-                      >
-                        View History
-                      </Link> */}
+
                     </div>
                   </dl>
                 </div>

@@ -1,24 +1,16 @@
-import React, { useEffect, useContext } from "react";
-import { transactionContext } from "../Context/TransactionContext/TransactionsContext";
-import { Link } from "react-router-dom";
+import React from "react";
+
 import moment from 'moment';
 const AccountSummary = ({ profileData, incomeList, expenseList }) => {
   console.log("profileData", profileData)
-  const accounts = []
 
-  useEffect(() => {
-
-  }, [profileData])
   return (
     <>
       <div className="max-w-4xl mx-auto mb-12 text-center">
         <h3 className="mb-4 text-xl md:text-4xl leading-tight text-indigo-600 font-bold tracking-tighter mt-4">
           Total Income/Expenses of All Accounts
         </h3>
-        {/* <p className="text-lg md:text-xl text-coolGray-500 font-medium">
-          A list of your company's accounts, either separated by category or in
-          chronological order.
-        </p> */}
+
       </div>
       <section className="bg-coolGray-50 py-4">
         <div className="container px-4 mx-auto">

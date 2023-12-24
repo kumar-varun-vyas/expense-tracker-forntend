@@ -6,25 +6,17 @@ import Pagination from "../Pagination/Pagination";
 import { useNavigate } from 'react-router-dom';
 const AllTransactions = ({ transactions, handleNextBtn, handlePrevBtn, page, pageCount, setPage, totalData, accountId }) => {
 
-  const { getAllTransactionByAc, deleteTransaction, loading, error } = useContext(transactionContext)
-  const navigate = useNavigate();
+  const { deleteTransaction, loading, error } = useContext(transactionContext)
   const onDeleteHandler = (id) => {
     deleteTransaction(id)
     window.href.reload()
   }
   const onEditHandler = (id) => {
-
-
     window.location = `/edit-transaction/${accountId}?type=edit&transactionID=${id}`;
   }
 
-
-
-
-
   return (
     <>
-
       {error &&
         <>
           < div
@@ -121,7 +113,6 @@ const AllTransactions = ({ transactions, handleNextBtn, handlePrevBtn, page, pag
                               <div className="font-medium text-gray-900">
                                 {moment(transaction?.createdAt).format('ll')}
                               </div>
-                              {/* <div className="text-gray-500">Emma</div> */}
 
                             </div>
                           </td>
@@ -182,7 +173,6 @@ const AllTransactions = ({ transactions, handleNextBtn, handlePrevBtn, page, pag
         </div>
       }
       <Pagination handleNextBtn={handleNextBtn} handlePrevBtn={handlePrevBtn} page={page} pageCount={pageCount} setPage={setPage} totalData={totalData} />
-
 
     </>
   );

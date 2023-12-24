@@ -6,7 +6,6 @@ export default function AddAccount() {
   const { id } = useParams();
   const { createAccount, error, getAccountDetails, updateAccount } = useContext(accountContext);
   const [isEditPage, setEditPage] = useState(window.location.pathname.indexOf("edit-account") !== -1)
-  const [account, setAccount] = useState('')
   const [formData, setFormData] = useState({
     name: "",
     accountType: "",
@@ -15,35 +14,26 @@ export default function AddAccount() {
   });
 
   useEffect(() => {
-    // console.log("edit-account", window.location.pathname);
     if (window.location.pathname.indexOf("edit-account") !== -1)
       setEditPage(true)
   }, [])
 
   useEffect(() => {
     if (window.location.pathname.indexOf("edit-account") !== -1) {
-
       getAccountDetails(id).then((res) => {
         if (res.status == 'success') {
           let acc = res.data
-          console.log("acc-----------", acc);
           setFormData({
             ...formData,
             name: acc.name,
             accountType: acc.accountType,
             initialBalance: acc.initialBalance,
             notes: acc.notes,
-
           })
-
         }
       })
-
     }
-
-
   }, [id])
-  // console.log(error, isEditPage)
 
   //handle form change
   const handleChange = e => {
